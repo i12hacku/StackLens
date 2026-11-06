@@ -1,0 +1,12 @@
+{
+  "name": "stacklens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser extension that detects the technology stack of any website.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "license": "MIT"
+}

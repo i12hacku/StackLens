@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "StackLens – Website Technology Detector",
+  "short_name": "StackLens",
+  "version": "0.1.0",
+  "description": "Detect the tech stack of any website: frameworks, CMS, analytics, CDN, hosting, JavaScript libraries and more.",
+  "minimum_chrome_version": "102",
+  "permissions": ["scripting", "storage", "webRequest", "cookies"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "StackLens",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

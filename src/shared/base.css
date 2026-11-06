@@ -1,0 +1,142 @@
+/* StackLens design tokens.
+   Strata palette: layers get deeper (darker) from the frontend down to infrastructure.
+   Ochre is reserved for problems the user should act on. */
+:root {
+  --paper: #f2f4f3;
+  --surface: #ffffff;
+  --ink: #16211f;
+  --ink-soft: #4e5d59;
+  --ink-faint: #74827e;
+  --line: #d6dedb;
+  --hover: #e6ecea;
+
+  --s1: #8fd0be; /* frontend */
+  --s2: #4fa89b; /* third-party services */
+  --s3: #2b7a82; /* backend */
+  --s4: #1d4e6b; /* infrastructure */
+
+  --action: #1d4e6b;
+  --action-ink: #ffffff;
+  --focus: #2b7a82;
+  --ochre: #e3a72f;
+  --ochre-wash: #fbf0d6;
+  --ochre-ink: #6b4a06;
+  --ok: #1f7a4d;
+  --bad: #b4322a;
+
+  --display: Bahnschrift, 'DIN Alternate', 'DIN 2014', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  --text: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+
+  font-family: var(--text);
+  color: var(--ink);
+  background: var(--paper);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #111917;
+    --surface: #172220;
+    --ink: #e3ece9;
+    --ink-soft: #a3b4af;
+    --ink-faint: #7b8d88;
+    --line: #26332f;
+    --hover: #1f2c29;
+    --s1: #7fc9b5;
+    --s2: #45a093;
+    --s3: #348c96;
+    --s4: #3d7397;
+    --action: #7fc9b5;
+    --action-ink: #0d1a17;
+    --focus: #7fc9b5;
+    --ochre-wash: #2c2412;
+    --ochre-ink: #f0c565;
+    --ok: #5ccb91;
+    --bad: #f08a80;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 13px; line-height: 1.45; }
+button { font: inherit; color: inherit; }
+a { color: var(--s3); text-underline-offset: 2px; }
+@media (prefers-color-scheme: dark) { a { color: var(--s1); } }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+
+.display {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 82;
+  font-stretch: 85%;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 5px;
+  padding: 6px 11px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--hover); }
+.btn.primary { background: var(--action); border-color: var(--action); color: var(--action-ink); }
+.btn.primary:hover { filter: brightness(1.1); }
+
+.link-btn {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--s3);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+@media (prefers-color-scheme: dark) { .link-btn { color: var(--s1); } }
+
+/* ── Stack silhouette ───────────────────────────── */
+.silhouette { display: grid; }
+.silhouette .row { display: flex; align-items: center; }
+.silhouette .track { display: flex; justify-content: center; flex: none; }
+.silhouette .bar {
+  display: block;
+  width: var(--w);
+  border: 0;
+  padding: 0;
+  border-radius: 2px;
+  background: var(--s1);
+  transform-origin: center;
+  animation: build 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc((3 - var(--i)) * 90ms);
+}
+.silhouette [data-layer='services'] { background: var(--s2); }
+.silhouette [data-layer='backend'] { background: var(--s3); }
+.silhouette [data-layer='infra'] { background: var(--s4); }
+.silhouette .bar.empty { width: 10%; background: none; border-top: 1px dashed var(--ink-faint); border-radius: 0; opacity: 0.6; }
+.silhouette button.bar { cursor: pointer; }
+.silhouette button.bar:hover { filter: brightness(1.12); }
+
+.silhouette.tiny { gap: 1.5px; width: 30px; }
+.silhouette.tiny .track { width: 30px; }
+.silhouette.tiny .bar { height: 3px; animation: none; }
+
+.silhouette.small { gap: 3px; }
+.silhouette.small .track { width: 92px; }
+.silhouette.small .bar { height: 9px; }
+.silhouette.small .bar.empty { height: 0; margin: 4px 0; }
+
+.silhouette.large { gap: 6px; }
+.silhouette.large .track { width: 240px; }
+.silhouette.large .bar { height: 22px; border-radius: 3px; }
+.silhouette.large .bar.empty { height: 0; margin: 11px 0; }
+.silhouette .row-label { display: flex; gap: 8px; align-items: baseline; padding-left: 16px; }
+.silhouette .row-name { color: var(--ink-soft); }
+.silhouette .row-count { font-family: var(--display); font-weight: 600; font-size: 16px; }
+
+@keyframes build {
+  from { transform: scaleX(0); opacity: 0.2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .silhouette .bar { animation: none; }
+}

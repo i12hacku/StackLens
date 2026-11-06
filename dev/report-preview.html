@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>StackLens report</title>
+    <link rel="icon" href="../icons/icon-32.png" />
+    <link rel="stylesheet" href="../src/shared/base.css" />
+    <link rel="stylesheet" href="../src/report/report.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand display"><img src="../icons/icon-48.png" alt="" width="26" height="26" /> StackLens</div>
+        <h2 class="side-title display">Recent scans</h2>
+        <nav id="history" aria-label="Recent scans"></nav>
+        <button class="link-btn clear" id="clear-history">Clear history</button>
+      </aside>
+      <main id="main"><p class="message">Loading report…</p></main>
+    </div>
+    <script type="module" src="mock-chrome.js"></script>
+    <script type="module" src="../src/report/report.js"></script>
+  </body>
+</html>

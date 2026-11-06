@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <title>StackLens</title>
+    <link rel="stylesheet" href="../src/shared/base.css" />
+    <link rel="stylesheet" href="../src/popup/popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <div class="head-text">
+        <h1 class="host display" id="hostname">StackLens</h1>
+        <p class="summary">
+          <span id="summary">Reading this page…</span>
+          <button class="link-btn" id="rescan" hidden>Scan again</button>
+        </p>
+      </div>
+      <div id="silhouette" class="head-shape"></div>
+    </header>
+
+    <div class="warnings" id="warnings" role="note" hidden></div>
+
+    <div class="filter" id="filter-wrap" hidden>
+      <input type="search" id="search" placeholder="Filter by name or category" aria-label="Filter technologies" autocomplete="off" />
+    </div>
+
+    <main id="content" aria-live="polite"></main>
+
+    <footer class="actions" id="actions" hidden>
+      <button class="btn primary" id="open-report">Open full report</button>
+      <button class="btn" id="export-json" aria-label="Save as JSON">JSON</button>
+      <button class="btn" id="export-md" aria-label="Save as Markdown">Markdown</button>
+      <button class="btn" id="copy" aria-label="Copy report as Markdown">Copy</button>
+    </footer>
+
+    <script type="module" src="mock-chrome.js"></script>
+    <script type="module" src="../src/popup/popup.js"></script>
+  </body>
+</html>

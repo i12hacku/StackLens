@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "stacklens-preview", "runtimeExecutable": "node", "runtimeArgs": ["scripts/dev-server.mjs", "5173"], "port": 5173 }
+  ]
+}
